@@ -10,7 +10,10 @@ model.fit(x, y)
 hours = float(input("Enter study hours: "))
 attendance = float(input("Enter attendance: "))
 
-prediction = model.predict([[hours, attendance]])
+prediction = model.predict(pd.DataFrame({
+    "Hours": [hours],
+    "Attendance": [attendance]
+}))
 print("\nPredicted Marks:", round(prediction[0], 2))
 
 if prediction[0] >= 75:
